@@ -1,0 +1,9 @@
+A condition variable obeys the context management protocol: 
+using the with statement acquires the associated lock for the duration of the enclosed block. 
+The acquire() and release() methods also call the corresponding methods of the associated lock.
+Other methods must be called with the associated lock held. The wait() method releases the lock, and then blocks until another thread awakens it by calling notify() or notify_all(). 
+Once awakened, wait() re-acquires the lock and returns. It is also possible to specify a timeout.
+The notify() method wakes up one of the threads waiting for the condition variable, if any are waiting. 
+The notify_all() method wakes up all threads waiting for the condition variable.
+Note: the notify() and notify_all() methods don’t release the lock; 
+this means that the thread or threads awakened will not return from their wait() call immediately, but only when the thread that called notify() or notify_all() finally relinquishes ownership of the lock.

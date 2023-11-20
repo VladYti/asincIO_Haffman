@@ -1,0 +1,4 @@
+A condition variable is always associated with some kind of lock; 
+this can be passed in or one will be created by default. 
+Passing one in is useful when several condition variables must share the same lock. 
+The lock is part of the condition object: you don’t have to track it separately.
